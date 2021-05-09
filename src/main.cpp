@@ -63,10 +63,11 @@ int			main(int		argc,
     prg.original_path.push_back(argv[i]);
   prg.cursor = prg.files.end();
 
+  prg.cursor = prg.files.begin();
   if (refresh_files(prg, argv) == false)
     return (EXIT_FAILURE);
-
-  prg.cursor = prg.files.begin();
+  if (prg.cursor != prg.files.end())
+    prg.pictures.emplace(*prg.cursor);
 
   bunny_set_context(&gl_context);
   bunny_loop(prg.win, 50, &prg);

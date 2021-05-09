@@ -4,6 +4,7 @@
 //
 // bview: bunny picture viewer
 
+#include		<sstream>
 #include		<string.h>
 #include		<libgen.h>
 #include		<sys/stat.h>
@@ -33,20 +34,20 @@ bool			refresh_files(bview		&prg,
       ".png", ".jpg", ".jpeg", ".jfif", ".psd", ".tiff"
     };
 
+  std::string		path = str;
   DIR			*dir;
   struct dirent		*ent;
   struct stat		st;
 
-  if ((dir = opendir(str.c_str())) == NULL && errno == ENOTDIR)
+  if ((dir = opendir(path.c_str())) == NULL && errno == ENOTDIR)
     {
       char		buffer[str.size() + 1];
-      char		*d;
 
       strncpy(&buffer[0], str.c_str(), str.size() + 1);
-      d = dirname(&buffer[0]);
-      if ((dir = opendir(d)) == NULL)
+      path = dirname(&buffer[0]);
+      if ((dir = opendir(path.c_str())) == NULL)
 	{
-	  fprintf(stderr, "%s: Cannot open directory %s. (%s)\n", argv[0], d, strerror(errno));
+	  fprintf(stderr, "%s: Cannot open directory %s. (%s)\n", argv[0], path.c_str(), strerror(errno));
 	  return (false);
 	}
     }
@@ -63,7 +64,10 @@ bool			refresh_files(bview		&prg,
       for (int i = 0; i < NBRCELL(ext); ++i)
 	if (extension(ent->d_name, ext[i]))
 	  {
-	    prg.files.push_back(ent->d_name);
+	    std::stringstream ss;
+
+	    ss << path << "/" << ent->d_name;
+	    prg.files.push_back(ss.str());
 	    break ;
 	  }
     }
@@ -106,6 +110,8 @@ bool			refresh_files(bview		&prg,
 	    prg.cursor = i;
 	    break ;
 	  }
+      if (prg.cursor == prg.files.end())
+	prg.cursor = prg.files.begin();
     }
   return (true);
 }

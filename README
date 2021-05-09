@@ -68,6 +68,9 @@ Functionalities:
     on Windows that will allow to configuration some aspects of the software:
     - BackgroundColor = Red, Green, Blue
 
+  Mode "fit the screen" is the default for pictures bigger than the screen.
+  Mode "true resolution" is the default for pictures smaller than the screen.
+
 Coding rules:
 -------------
 
