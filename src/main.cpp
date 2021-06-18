@@ -25,7 +25,7 @@ extern "C"
       NULL,
       NULL,
       NULL,
-      NULL,
+      bview_resize,
       bview_loop,
       bview_display,
       NULL,
@@ -42,11 +42,15 @@ extern "C"
 int			main(int		argc,
 			     char		**argv)
 {
-  bview			prg;
+  static bview		prg;
   const t_bunny_size	*siz;
 
+  prg.buffer_size = 10;
+  prg.slidelen = 2;
+  prg.slideshow = false;
   siz = bunny_get_screen_resolution();
-  if ((prg.win = bunny_start_style(siz->x, siz->y, NO_BORDER, "bview")) == NULL)
+  //if ((prg.win = bunny_start_style(siz->x, siz->y, NO_BORDER, "bview")) == NULL)
+  if ((prg.win = bunny_start(800, 600, false, "bview")) == NULL)
     {
       fprintf(stderr, "%s: Cannot open window.\n", argv[0]);
       return (EXIT_FAILURE);
@@ -67,9 +71,10 @@ int			main(int		argc,
   if (refresh_files(prg, argv) == false)
     return (EXIT_FAILURE);
   if (prg.cursor != prg.files.end())
-    prg.pictures.emplace(*prg.cursor);
+    prg.preload(prg.buffer_size / 2);
 
   bunny_set_context(&gl_context);
+  printf("%s slideshow\n", prg.slideshow ? "do" : "do not");
   bunny_loop(prg.win, 50, &prg);
   bunny_stop(prg.win);
 

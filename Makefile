@@ -11,7 +11,7 @@
   BIN		=	bview
   FLAG		=	-W -Wall -g -g3 -ggdb -std=gnu++11
 
-  INCLUDE	=	-I./include/
+  INCLUDE	=	-I./include/ -DDEBUG
   SRC		=	$(wildcard src/*.cpp)
   OBJ		=	$(SRC:.cpp=.o)
   LIBPATH	=	-L../../

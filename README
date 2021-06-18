@@ -38,27 +38,29 @@ Functionalities:
 ----------------
 
   Keys:
-    Left and right keys allow to see previous and next picture in directory.
-    Up and down allow to zoom in and out.
+-   Left and right keys allow to see previous and next picture in directory.
+-   Up and down allow to zoom in and out.
 
-    Use of control and arrow keys allow to move on the picture.
-    Use of alt, left and right allow smooth rotation.
-    Use of alt, up and down allow 90° degree like rotation.
-    Use of shift, left or right make an horizontal mirror.
-    Use of shift, up or down make a vertical mirror.
+-   Use of control and arrow keys allow to move on the picture.
+-   Use of alt, left and right allow smooth rotation.
+-   Use of alt, up and down allow 90° degree like rotation.
+-   Use of shift, left or right make an horizontal mirror.
+-   Use of shift, up or down make a vertical mirror.
+-   Use of alt + return or F11 to toggle fullscreen.
+-   Use of control + return to reset zoom, position and rotation.
     
-    F1 change the way zoom works (bilinear or closest approximation)
-    Return to start the slideshow or stop it. During the slide show, + and - keys
+    F1 change the way zoom works (bilinear or closest approximation) UNSUPPORTED
+-   Return to start the slideshow or stop it. During the slide show, + and - keys
     allow the user to change slideshow speed.
-    Space toggle picture display between "fit the screen" and "true resolution".
+-   Space toggle picture display between "fit the screen" and "true resolution".
     Escape to exit.
 
   Mouse:
-    Left click with control and draw allow you to move the picture.
-    Left click with alt allow you to rotate smoothly the picture.
+-   Left click with control and draw allow you to move the picture.
+-   Left click with alt allow you to rotate smoothly the picture.
     Right click open the contextual menu with key functionnalities displayed.
-    Wheel zoom in or out.
-    Wheel click toggle picture display like space does.
+-   Wheel zoom in or out.
+-   Wheel click toggle picture display like space does.
 
   Buttons:
     Left, right, toggle picture display, zoom in, zoom out, exit

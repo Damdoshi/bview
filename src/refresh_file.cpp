@@ -99,7 +99,7 @@ bool			refresh_files(bview		&prg,
 	    break ;
 	  }
     }
-  // Pas de cursueur ==> c'est le chargement du programme
+  // Pas de curseur ==> c'est le chargement du programme
   // et il n'y a qu'un seul paramètre, on va donc chercher le fichier dans le
   // dossier chargé
   else if (prg.original_path.size() == 1)
@@ -113,5 +113,7 @@ bool			refresh_files(bview		&prg,
       if (prg.cursor == prg.files.end())
 	prg.cursor = prg.files.begin();
     }
+
+  // On charge les fichiers aux alentours du curseur
   return (true);
 }
