@@ -20,25 +20,34 @@ void			bview_toggle_fullscreen(bview	&v)
 	}
       return ;
     }
-  t_bunny_picture	*pic = v.pictures.back();
 
-  siz.x *= 0.8;
-  siz.y *= 0.8;
-  v.cursor->zoom.x = 1.0;
-  v.cursor->zoom.y = 1.0;
-  if (siz.x < pic->buffer.width)
+  if (v.cursor == v.files.end())
     {
-      v.cursor->zoom.x = ((double)siz.x) / pic->buffer.width;
-      v.cursor->zoom.y = v.cursor->zoom.x;
+      siz.x *= 0.33;
+      siz.y *= 0.33;
     }
-  if (siz.y < pic->buffer.height * v.cursor->zoom.y)
+  else
     {
-      v.cursor->zoom.y = ((double)siz.y) / pic->buffer.height;
-      v.cursor->zoom.x = v.cursor->zoom.y;
-    }
+      siz.x *= 0.8;
+      siz.y *= 0.8;
+      t_bunny_picture	*pic = v.pictures.back();
 
-  siz.x = pic->buffer.width * v.cursor->zoom.x;
-  siz.y = pic->buffer.height * v.cursor->zoom.y;
+      v.cursor->zoom.x = 1.0;
+      v.cursor->zoom.y = 1.0;
+      if (siz.x < pic->buffer.width)
+	{
+	  v.cursor->zoom.x = ((double)siz.x) / pic->buffer.width;
+	  v.cursor->zoom.y = v.cursor->zoom.x;
+	}
+      if (siz.y < pic->buffer.height * v.cursor->zoom.y)
+	{
+	  v.cursor->zoom.y = ((double)siz.y) / pic->buffer.height;
+	  v.cursor->zoom.x = v.cursor->zoom.y;
+	}
+
+      siz.x = pic->buffer.width * v.cursor->zoom.x;
+      siz.y = pic->buffer.height * v.cursor->zoom.y;
+    }
   bunny_stop(v.win);
   if ((v.win = bunny_start(siz.x, siz.y, false, "bview")) == NULL)
     {

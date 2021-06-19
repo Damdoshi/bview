@@ -11,7 +11,7 @@ t_bunny_response	bview_move(const t_bunny_position	*off,
 				   bview			&prg)
 {
   (void)off;
-  if (prg.down_in == false)
+  if (prg.down_in == false || prg.cursor == prg.files.end())
     return (GO_ON);
   t_bunny_position	here = *bunny_get_mouse_position();
   t_bunny_position	diff =

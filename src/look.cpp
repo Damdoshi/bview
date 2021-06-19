@@ -9,7 +9,9 @@
 std::list<presentation>::iterator bview::look(int	l)
 {
   std::list<presentation>::iterator it = cursor;
-  
+
+  if (cursor == files.end())
+    return (files.end());
   if (l < 0)
     while (++l)
       ++it;

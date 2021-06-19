@@ -12,8 +12,8 @@ t_bunny_response	bview_wheel(int			wheelid,
 				    bview		&prg)
 {
   (void)wheelid;
-  (void)delta;
-  (void)prg;
+  if (prg.cursor == prg.files.end())
+    return (GO_ON);
   while (delta > 0)
     {
       prg.cursor->zoom.x = prg.cursor->zoom.y *= 0.9;

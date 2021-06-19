@@ -22,6 +22,8 @@ t_bunny_response	bview_click(t_bunny_event_state	state,
     {
       if (state == GO_DOWN)
 	{
+	  if (view.cursor == view.files.end())
+	    return (GO_ON);
 	  view.down_position = *bunny_get_mouse_position();
 	  view.cursor->before_click_rot = view.cursor->rotation;
 	  view.cursor->before_click_pos = view.cursor->position;

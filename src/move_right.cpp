@@ -8,7 +8,7 @@
 
 void			bview::move_right(void)
 {
-  if (down_in)
+  if (down_in || cursor == files.end())
     return ;
   if (++cursor == files.end())
     cursor = files.begin();

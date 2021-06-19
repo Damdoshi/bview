@@ -12,7 +12,7 @@ t_bunny_response	bview_display(bview		&prg)
   // On remplit l'écran de la couleur issu de la configuration
   // ou de noir, en attendant qu'il y ai de la configuration...
   bunny_clear(&prg.win->buffer, BLACK);
-  if (!prg.pictures.empty())
+  if (!prg.pictures.empty() && prg.cursor != prg.files.end())
     {
       t_bunny_picture	*pic = prg.pictures.back();
       t_bunny_position	pos =
@@ -43,6 +43,8 @@ t_bunny_response	bview_display(bview		&prg)
 	}
       else if (prg.cursor->fitted == presentation::COVER)
 	{
+	  prg.cursor->zoom.x = 1.0;
+	  prg.cursor->zoom.y = 1.0;
 	  if (prg.win->buffer.width > pic->buffer.width)
 	    {
 	      prg.cursor->zoom.x = ((double)prg.win->buffer.width) / pic->buffer.width;
@@ -68,7 +70,14 @@ t_bunny_response	bview_display(bview		&prg)
       bunny_get_keyboard()[BKS_LSHIFT] || bunny_get_keyboard()[BKS_RSHIFT] ||
       bunny_get_keyboard()[BKS_LCONTROL] || bunny_get_keyboard()[BKS_RCONTROL])
     {
-      //
+
+    }
+  // Message
+  if (bunny_get_current_time() - prg.mtime < 2)
+    {
+      centered_texto(&prg.win->buffer, prg.message,
+		     prg.win->buffer.height * 0.45,
+		     prg.win->buffer.height * 0.1);
     }
   bunny_display(prg.win);
   return (GO_ON);

@@ -48,8 +48,9 @@ Functionalities:
 -   Use of shift, up or down make a vertical mirror.
 -   Use of alt + return or F11 to toggle fullscreen.
 -   Use of control + return to reset zoom, position and rotation.
-    
-    F1 change the way zoom works (bilinear or closest approximation) UNSUPPORTED
+
+-   F1 to display the file name.
+    F2 change the way zoom works (bilinear or closest approximation) UNSUPPORTED
 -   Return to start the slideshow or stop it. During the slide show, + and - keys
     allow the user to change slideshow speed.
 -   Space toggle picture display between "fit the screen" and "true resolution".

@@ -74,7 +74,6 @@ int			main(int		argc,
     prg.preload(prg.buffer_size / 2);
 
   bunny_set_context(&gl_context);
-  printf("%s slideshow\n", prg.slideshow ? "do" : "do not");
   bunny_loop(prg.win, 50, &prg);
   bunny_stop(prg.win);
 

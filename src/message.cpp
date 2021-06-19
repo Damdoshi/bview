@@ -6,7 +6,9 @@
 
 #include		"bview.hpp"
 
-void			bview_reset(bview		&view)
+void			bview_message(bview &b,
+				      const std::string	&str)
 {
-
+  b.message = str;
+  b.mtime = bunny_get_current_time();
 }
