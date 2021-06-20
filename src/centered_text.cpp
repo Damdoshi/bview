@@ -30,6 +30,8 @@ void			centered_text(t_bunny_buffer	*pic,
 	letter = &gl_vector_font[BFT_EXCLAMATION];
       else if (str[i] == '/')
 	letter = &gl_vector_font[BFT_SLASH];
+      else if (str[i] == '.')
+	letter = &gl_vector_font[BFT_DOT];
       else
 	continue ;
       for (int j = 0; j < letter->nb_edge; ++j)
