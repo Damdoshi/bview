@@ -170,7 +170,7 @@ void				bview_turn_picture(presentation	&p,
 void				bview_multiply_scale(presentation &p,
 						     double	x,
 						     double	y);
-void				bview_toggle_fullscreen(bview	&p);
+bool				bview_toggle_fullscreen(bview	&p);
 void				bview_reset(bview		&b);
 
 void				bview_message(bview		&b,

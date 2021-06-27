@@ -51,13 +51,22 @@ bool			refresh_files(bview		&prg,
 	  return (false);
 	}
     }
+  else if (dir == NULL)
+    {
+      fprintf(stderr, "%s: Cannot open %s. (%s)\n", argv[0], path.c_str(), strerror(errno));
+      return (false);
+    }
   while ((ent = readdir(dir)) != NULL)
     {
+      char		buffer[1024];
+
       if (strcmp(ent->d_name, ".") == 0)
 	continue ;
       if (strcmp(ent->d_name, "..") == 0)
 	continue ;
-      stat(ent->d_name, &st);
+      snprintf(&buffer[0], sizeof(buffer), "%s/%s", path.c_str(), ent->d_name);
+      if (stat(&buffer[0], &st) == -1)
+	continue ;
       if (S_ISDIR(st.st_mode))
 	continue ;
 

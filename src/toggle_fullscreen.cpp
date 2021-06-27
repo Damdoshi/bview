@@ -6,19 +6,22 @@
 
 #include		"bview.hpp"
 
-void			bview_toggle_fullscreen(bview	&v)
+bool			bview_toggle_fullscreen(bview	&v)
 {
   t_bunny_size		siz = *bunny_get_screen_resolution();
 
-  if (v.win->buffer.width != siz.x || v.win->buffer.height != siz.y)
+  if (v.win)
     {
-      bunny_stop(v.win);
-      if ((v.win = bunny_start_style(siz.x, siz.y, NO_BORDER, "bview")) == NULL)
+      if (v.win->buffer.width != siz.x || v.win->buffer.height != siz.y)
 	{
-	  fprintf(stderr, "bview: Cannot re-open window.\n");
-	  exit(EXIT_FAILURE);
+	  bunny_stop(v.win);
+	  if ((v.win = bunny_start_style(siz.x, siz.y, NO_BORDER, "bview")) == NULL)
+	    {
+	      fprintf(stderr, "bview: Cannot re-open window.\n");
+	      return (false);
+	    }
+	  return (true);
 	}
-      return ;
     }
 
   if (v.cursor == v.files.end())
@@ -48,11 +51,12 @@ void			bview_toggle_fullscreen(bview	&v)
       siz.x = pic->buffer.width * v.cursor->zoom.x;
       siz.y = pic->buffer.height * v.cursor->zoom.y;
     }
-  bunny_stop(v.win);
+  if (v.win)
+    bunny_stop(v.win);
   if ((v.win = bunny_start(siz.x, siz.y, false, "bview")) == NULL)
     {
       fprintf(stderr, "bview: Cannot re-open window.\n");
-      exit(EXIT_FAILURE);
+      return (false);
     }
-  return ;
+  return (true);
 }
