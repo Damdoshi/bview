@@ -14,7 +14,7 @@
   INCLUDE	=	-I./include/ -DDEBUG
   SRC		=	$(wildcard src/*.cpp)
   OBJ		=	$(SRC:.cpp=.o)
-  LIBPATH	=	-L../../
+  LIBPATH	=	-L$(HOME)/.froot/lib/
   LIB		=	-llapin -lsfml-graphics -lsfml-audio -lsfml-window	\
 			-lsfml-system -lstdc++ -lm -ldl -lpthread -lavcall
 

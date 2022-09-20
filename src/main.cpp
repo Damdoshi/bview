@@ -43,10 +43,20 @@ int			main(int		argc,
 			     char		**argv)
 {
   static bview		prg;
+  //const t_bunny_size	*siz;
 
   prg.buffer_size = 10;
   prg.slidelen = 2;
-  
+  prg.slideshow = false;
+  //siz = bunny_get_screen_resolution();
+  //if ((prg.win = bunny_start_style(siz->x, siz->y, NO_BORDER, "bview")) == NULL)
+  if ((prg.win = bunny_start(800, 600, false, "bview")) == NULL)
+    {
+      fprintf(stderr, "%s: Cannot open window.\n", argv[0]);
+      return (EXIT_FAILURE);
+    }
+  bunny_move_window(prg.win, {0, 0});
+
   if (argc == 1)
     {
       argc = 2;

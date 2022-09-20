@@ -53,7 +53,7 @@ bool			refresh_files(bview		&prg,
     }
   else if (dir == NULL)
     {
-      fprintf(stderr, "%s: Cannot open %s. (%s)\n", argv[0], path.c_str(), strerror(errno));
+      fprintf(stderr, "%s: Cannot open directory %s. (%s)\n", argv[0], path.c_str(), strerror(errno));
       return (false);
     }
   while ((ent = readdir(dir)) != NULL)
