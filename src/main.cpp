@@ -34,7 +34,6 @@ extern "C"
       NULL,
       NULL,
       NULL,
-      NULL,
       NULL
     };
 }

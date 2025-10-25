@@ -7,16 +7,13 @@
 ## ----------------------------------------------------------------------------
 ## Configuration --------------------------------------------------------------
 
-  CC		=	g++
+  CC		=	b++
   BIN		=	bview
-  FLAG		=	-W -Wall -g -g3 -ggdb -std=gnu++11
+  FLAG		=	-W -Wall -g -g3 -ggdb
 
   INCLUDE	=	-I./include/ -DDEBUG
   SRC		=	$(wildcard src/*.cpp)
   OBJ		=	$(SRC:.cpp=.o)
-  LIBPATH	=	-L$(HOME)/.froot/lib/
-  LIB		=	-llapin -lsfml-graphics -lsfml-audio -lsfml-window	\
-			-lsfml-system -lstdc++ -lm -ldl -lpthread -lavcall
 
   ## Rules ------------------------------------------------------------------
   all:		bin
